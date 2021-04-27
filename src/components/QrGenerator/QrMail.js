@@ -130,12 +130,7 @@ function QrMail() {
             onChange={(e) => setMessage(e.target.value)}
           />
 
-          <Button
-            type="submit"
-            margin="4rem auto"
-            onClick={qrSubmit}
-            disabled={!message || !subject || !mail}
-          >
+          <Button type="submit" margin="4rem auto" onClick={qrSubmit}>
             <FaQrcode /> &nbsp; Generate QR Code
           </Button>
         </Box>
@@ -155,12 +150,7 @@ function QrMail() {
             borderRadius="30px"
             bg="white"
           />
-          <Button
-            type="submit"
-            margin="auto"
-            onClick={downloadSvg}
-            disabled={!qr}
-          >
+          <Button type="submit" margin="auto" onClick={downloadSvg}>
             <FaDownload />
             &nbsp;Download SVG
           </Button>

@@ -11,22 +11,13 @@ import {
   Textarea,
   Button,
 } from "@chakra-ui/react";
-import {
-  FaFileAlt,
-  // FaFileImage,
-  FaRegEnvelope,
-  FaDownload,
-  FaQrcode,
-} from "react-icons/fa";
+import { FaFileAlt, FaRegEnvelope, FaDownload, FaQrcode } from "react-icons/fa";
 
 function QrMail() {
   const [mail, setMail] = useState("");
   const [subject, setSubject] = useState("");
   const [message, setMessage] = useState("");
   const [qr, setQr] = useState("");
-  // const mailRef = useRef(null);
-  // const subjectRef = useRef(null);
-  // const messageRef = useRef(null);
   const qrSubmit = async () => {
     const msg = {
       mail: mail,
@@ -37,12 +28,10 @@ function QrMail() {
 
     axios
       .post("https://qr-generator-cw.herokuapp.com/qrcodemail", msg)
-      // .post("http://localhost:3002/qrcodemail", msg)
+
       .then((res) => {
         setQr("");
         setQr("http://localhost:3002" + res.data);
-
-        // console.log(qr);
       })
       .catch((err) => console.log(err));
   };
@@ -77,9 +66,6 @@ function QrMail() {
             bg="#fff"
             height="60vh"
             width="10vh"
-            // marginTop="1.5rem"
-            // marginBottom="1.5rem"
-            // marginLeft="1.5rem"
             margin="2rem auto 0"
             borderRadius="50px"
             alignItems="center"
@@ -95,9 +81,6 @@ function QrMail() {
                 />
               </Link>
             </Box>
-            {/* <Link to="/img" style={{ margin: "auto" }}>
-          <IconButton icon={<FaFileImage />} />
-        </Link> */}
             <Box margin="2rem auto 0">
               <Link to="/mail">
                 <IconButton
@@ -163,9 +146,6 @@ function QrMail() {
           height="auto"
           width="50vh"
           margin="1.5rem auto"
-          // marginTop="1.5rem"
-          // marginBottom="1.5rem"
-          // marginRight="1.5rem"
           borderRadius="30px"
         >
           <Image

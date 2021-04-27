@@ -3,19 +3,12 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import fileDownload from "js-file-download";
 import { Box, Input, IconButton, Image, Button } from "@chakra-ui/react";
-import {
-  FaFileAlt,
-  // FaFileImage,
-  FaRegEnvelope,
-  FaQrcode,
-  FaDownload,
-} from "react-icons/fa";
+import { FaFileAlt, FaRegEnvelope, FaQrcode, FaDownload } from "react-icons/fa";
 import qrCode from "./qrlogo.png";
 import load from "./load.svg";
 import "../QrGenerator/QrGenerator.css";
 
 function QrGenerator() {
-  // const [data, setData] = useState("");
   const [qr, setQr] = useState("");
   const [loading, setLoading] = useState(false);
   const valueRef = useRef(null);
@@ -23,15 +16,12 @@ function QrGenerator() {
   const qrSubmit = async () => {
     setLoading(true);
 
-    // setData(valueRef.current.value);
-
     const msg = {
       text: valueRef.current.value,
     };
 
     axios
       .post("https://qr-generator-cw.herokuapp.com/qrcodemsg", msg)
-      // .post("http://localhost:3002/qrcodemsg", msg)
       .then((res) => {
         setQr("");
         setQr("http://localhost:3002" + res.data);
@@ -76,9 +66,6 @@ function QrGenerator() {
             bg="#fff"
             height="60vh"
             width="10vh"
-            // marginTop="1.5rem"
-            // marginBottom="1.5rem"
-            // marginLeft="1.5rem"
             margin="2rem auto 0"
             borderRadius="50px"
             alignItems="center"
@@ -94,9 +81,6 @@ function QrGenerator() {
                 />
               </Link>
             </Box>
-            {/* <Link to="/img" style={{ margin: "auto" }}>
-          <IconButton icon={<FaFileImage />} />
-        </Link> */}
             <Box margin="2rem auto 0">
               <Link to="/mail">
                 <IconButton
@@ -120,16 +104,10 @@ function QrGenerator() {
             placeholder="Enter Your Text Here"
             _placeholder={{ color: "#023e8a" }}
             variant="unstyled"
-            // onChange={handleChange}
             ref={valueRef}
           />
 
-          <Button
-            type="submit"
-            margin="4rem auto"
-            onClick={qrSubmit}
-            // disabled={!data}
-          >
+          <Button type="submit" margin="4rem auto" onClick={qrSubmit}>
             <FaQrcode /> &nbsp; Generate QR Code
           </Button>
         </Box>
@@ -140,9 +118,6 @@ function QrGenerator() {
           height="auto"
           width="50vh"
           margin="1.5rem auto"
-          // marginTop="1.5rem"
-          // marginBottom="1.5rem"
-          // marginRight="1.5rem"
           borderRadius="30px"
         >
           <Image
@@ -152,12 +127,7 @@ function QrGenerator() {
             borderRadius="30px"
             bg="white"
           />
-          <Button
-            type="submit"
-            margin="auto"
-            onClick={downloadSvg}
-            // disabled={!qr}
-          >
+          <Button type="submit" margin="auto" onClick={downloadSvg}>
             <FaDownload />
             &nbsp;Download SVG
           </Button>

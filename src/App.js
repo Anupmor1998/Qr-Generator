@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import QrGenerator from "./components/QrGenerator/QrGenerator";
+// import QrImg from "./components/QrGenerator/QrImg";
+import QrMail from "./components/QrGenerator/QrMail";
+import bg from "./components/QrGenerator/bg.jpg";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider>
+      <Box backgroundImage={`url(${bg})`}>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/" exact component={QrGenerator} />
+            {/* <Route path="/img" component={QrImg} /> */}
+            <Route path="/mail" component={QrMail} />
+          </Switch>
+        </BrowserRouter>
+      </Box>
+    </ChakraProvider>
   );
 }
 

@@ -30,8 +30,8 @@ function QrGenerator() {
     };
 
     axios
-      // .post("https://qr-generator-cw.herokuapp.com/qrcodemsg", msg)
-      .post("http://localhost:3002/qrcodemsg", msg)
+      .post("https://qr-generator-cw.herokuapp.com/qrcodemsg", msg)
+      // .post("http://localhost:3002/qrcodemsg", msg)
       .then((res) => {
         setQr("");
         setQr("http://localhost:3002" + res.data);
@@ -41,7 +41,7 @@ function QrGenerator() {
   };
   const downloadSvg = () => {
     axios
-      .get("http://localhost:3002/qrcodemsg", {
+      .get("https://qr-generator-cw.herokuapp.com/qrcodemsg", {
         responseType: "arraybuffer",
       })
       .then((res) => {

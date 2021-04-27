@@ -36,8 +36,8 @@ function QrMail() {
     // console.log(msg);
 
     axios
-      // .post("https://qr-generator-cw.herokuapp.com/qrcodemail", msg)
-      .post("http://localhost:3002/qrcodemail", msg)
+      .post("https://qr-generator-cw.herokuapp.com/qrcodemail", msg)
+      // .post("http://localhost:3002/qrcodemail", msg)
       .then((res) => {
         setQr("");
         setQr("http://localhost:3002" + res.data);
@@ -49,7 +49,7 @@ function QrMail() {
 
   const downloadSvg = () => {
     axios
-      .get("http://localhost:3002/qrcodemail", {
+      .get("https://qr-generator-cw.herokuapp.com/qrcodemail", {
         responseType: "arraybuffer",
       })
       .then((res) => {

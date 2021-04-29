@@ -24,14 +24,13 @@ function QrMail() {
       subject: subject,
       message: message,
     };
-    // console.log(msg);
 
     axios
       .post("https://qr-generator-cw.herokuapp.com/qrcodemail", msg)
 
       .then((res) => {
         setQr("");
-        setQr("http://localhost:3002" + res.data);
+        setQr("https://qr-generator-cw.herokuapp.com" + res.data);
       })
       .catch((err) => console.log(err));
   };

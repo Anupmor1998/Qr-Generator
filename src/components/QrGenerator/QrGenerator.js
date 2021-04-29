@@ -24,7 +24,7 @@ function QrGenerator() {
       .post("https://qr-generator-cw.herokuapp.com/qrcodemsg", msg)
       .then((res) => {
         setQr("");
-        setQr("http://localhost:3002" + res.data);
+        setQr("https://qr-generator-cw.herokuapp.com" + res.data);
       })
       .catch((err) => console.log(err));
     setLoading(false);

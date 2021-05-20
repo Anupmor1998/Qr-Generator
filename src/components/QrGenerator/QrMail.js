@@ -37,7 +37,7 @@ function QrMail() {
 
   const downloadSvg = () => {
     axios
-      .get("https://qr-generator-cw.herokuapp.com/qrcodemail", {
+      .get("https://qr-generator-cw.herokuapp.com/downloadMail", {
         responseType: "arraybuffer",
       })
       .then((res) => {

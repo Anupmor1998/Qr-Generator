@@ -10,12 +10,9 @@ import "../QrGenerator/QrGenerator.css";
 
 function QrGenerator() {
   const [qr, setQr] = useState("");
-  const [loading, setLoading] = useState(false);
   const valueRef = useRef(null);
 
   const qrSubmit = async () => {
-    setLoading(true);
-
     const msg = {
       text: valueRef.current.value,
     };
@@ -27,11 +24,10 @@ function QrGenerator() {
         setQr("https://qr-generator-cw.herokuapp.com" + res.data);
       })
       .catch((err) => console.log(err));
-    setLoading(false);
   };
   const downloadSvg = () => {
     axios
-      .get("https://qr-generator-cw.herokuapp.com/qrcodemsg", {
+      .get("https://qr-generator-cw.herokuapp.com/download", {
         responseType: "arraybuffer",
       })
       .then((res) => {
@@ -39,13 +35,6 @@ function QrGenerator() {
       })
       .catch((err) => console.log(err));
   };
-
-  let imgUrl;
-  if (loading) {
-    imgUrl = `${load}`;
-  } else {
-    imgUrl = `${qr}?${Date.now()}`;
-  }
 
   return (
     <Box height="100vh" padding="2rem 0">
@@ -121,7 +110,7 @@ function QrGenerator() {
           borderRadius="30px"
         >
           <Image
-            src={imgUrl}
+            src={`${qr}?${Date.now()}`}
             boxSize="256px"
             margin="2rem auto"
             borderRadius="30px"

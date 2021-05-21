@@ -5,7 +5,6 @@ import fileDownload from "js-file-download";
 import { Box, Input, IconButton, Image, Button } from "@chakra-ui/react";
 import { FaFileAlt, FaRegEnvelope, FaQrcode, FaDownload } from "react-icons/fa";
 import qrCode from "./qrlogo.png";
-import load from "./load.svg";
 import "../QrGenerator/QrGenerator.css";
 
 function QrGenerator() {
